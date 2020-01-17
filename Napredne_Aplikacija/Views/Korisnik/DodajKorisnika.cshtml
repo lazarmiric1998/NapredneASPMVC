@@ -1,0 +1,70 @@
+﻿@model Napredne_Aplikacija.Models.Korisnik
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Dodavanje korisnika</h1>
+
+<h4>Korisnik</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="DodajKorisnika">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Ime" class="control-label"></label>
+                <input asp-for="Ime" class="form-control" />
+                <span asp-validation-for="Ime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Prezime" class="control-label"></label>
+                <input asp-for="Prezime" class="form-control" />
+                <span asp-validation-for="Prezime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pol" class="control-label"></label>
+                <select asp-for="Pol" asp-items="Html.GetEnumSelectList<Pol>()" class="form-control"></select>
+                <span asp-validation-for="Pol" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="KorisnickoIme" class="control-label"></label>
+                <input asp-for="KorisnickoIme" class="form-control" />
+                <span asp-validation-for="KorisnickoIme" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Grad" class="control-label"></label>
+                <input asp-for="Grad" class="form-control" />
+                <span asp-validation-for="Grad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pin" class="control-label"></label>
+                <input asp-for="Pin" class="form-control" />
+                <span asp-validation-for="Pin" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Sifra" class="control-label"></label>
+                <input asp-for="Sifra" class="form-control" />
+                <span asp-validation-for="Sifra" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PotvrdiSifru" class="control-label"></label>
+                <input asp-for="PotvrdiSifru" class="form-control" />
+                <span asp-validation-for="PotvrdiSifru" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Dodaj korisnika" class="btn btn-primary" />
+            </div>
+
+
+
+
+        </form>
+    </div>
+</div>

@@ -1,0 +1,55 @@
+﻿@model IEnumerable<IdentityRole>
+
+@{
+    ViewBag.Title = "Role";
+}
+
+<h1> Role </h1>
+
+@if (Model.Any())
+{
+    <a class="btn btn-primary" style="width:auto" asp-controller="administrator"
+       asp-action="CreateRole">
+        Kreiraj rolu
+    </a>
+     
+    foreach (var role in Model)
+    {
+        <div class="card mb-3">
+            <div class="card-header">
+                Role ID : @role.Id
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">@role.Name</h5>
+
+            </div>
+            <div class="card-footer">
+                <a class="btn btn-primary" asp-route-id="@role.Id" asp-controller="administrator" asp-action="EditRole">Edit</a>
+                <a href="#" class="btn btn-danger">Delete</a>
+
+            </div>
+
+
+        </div>
+
+    }
+
+}
+else
+{
+    <div class="card">
+        <div class="card-header">
+            Nema kreiranih rola.
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">
+                Morate kreirati rolu!
+            </h5>
+            <a class="btn btn-primary" style="width:auto" asp-controller="administrator"
+               asp-action="CreateRole">
+                Kreiraj rolu
+            </a>
+        </div>
+    </div>
+
+}

@@ -1,0 +1,77 @@
+﻿@model Napredne_Aplikacija.Models.LoginModel
+
+@{
+    ViewData["Title"] = "LoginKorisnika";
+}
+
+
+
+<div class="row">
+    <div class="col-md-6">
+        <h1>Prijavljivanje korisnika</h1>
+        <hr />
+        <form asp-action="LoginKorisnika">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
+            <div class="form-group">
+                <label asp-for="KorisnickoIme" class="control-label"></label>
+                <input asp-for="KorisnickoIme" class="form-control" />
+                <span asp-validation-for="KorisnickoIme" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Sifra" class="control-label"></label>
+                <input asp-for="Sifra" class="form-control" />
+                <span asp-validation-for="Sifra" class="text-danger"></span>
+            </div>
+            <div>
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label asp-for="rememberMe">
+                            <input asp-for="rememberMe" />
+                            @Html.DisplayNameFor(m => m.rememberMe)
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Prijavi se" class="btn btn-primary" />
+            </div>
+            <div>
+
+                <td> @Html.ValidationMessage("Error", null, new { @class = "text text-danger" })</td>
+            </div>
+
+
+
+        </form>
+    </div>
+
+    <div class="col-md-6">
+        <h1>Google prijava</h1>
+        <hr />
+        @{ 
+            if(Model.ExternalLogin.Count == 0)
+            {
+                <div>Nije moguce prijavljivanje preko google naloga</div>
+            }
+            else
+            {
+                   <form method="post" asp-action="ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl">
+                       <div>
+                           @foreach(var provider in Model.ExternalLogin)
+                           {
+                               <button type ="submit" class="btn btn-primary"
+                                       name="provider" value="@provider.Name"
+                                       title="Prijavi se pomocu tvog @provider.DisplayName naloga">
+                                   @provider.DisplayName
+                               </button>
+                            }
+
+                       </div>
+                   </form>
+            }
+        }
+    </div>
+</div>
